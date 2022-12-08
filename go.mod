@@ -1,4 +1,4 @@
-module github.com/vsvp21/go-opentelemetry-jaeger
+module github.com/vsvp21/zerolog-watermill-adapter
 
 go 1.19
 
