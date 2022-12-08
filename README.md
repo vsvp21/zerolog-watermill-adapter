@@ -1,0 +1,1 @@
+# Zerolog watermill adapter
