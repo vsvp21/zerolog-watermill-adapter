@@ -34,5 +34,11 @@ type ZerologLoggerAdapter struct {
 }
 
 func (l *ZerologLoggerAdapter) Error(msg string, err error, fields watermill.LogFields) {
+	// prevent behavior when sentry merges all errors from handlers to one issue
+	if msg == "Handler returned error" {
+		l.ErrorLogger.Error().Interface("fields", fields).Err(err).Msg(err.Error())
+		return
+	}
+
 	l.ErrorLogger.Error().Interface("fields", fields).Err(err).Msg(msg)
 }
